@@ -11,7 +11,7 @@ public class Socio {
         this.nombre = nombreSocio;
         this.apellido = apellidoSocio;
 
-        // ¡Acá está la magia! Tomamos la fecha de HOY y le sumamos los meses
+
         this.fechaVencimiento = LocalDate.now().plusMonths(meses);
     }
 }

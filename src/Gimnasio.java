@@ -19,14 +19,14 @@ public class Gimnasio {
             comando.setString(2, nuevoSocio.nombre);
             comando.setString(3, nuevoSocio.apellido);
 
-            // ¡NUEVO! Convertimos el LocalDate de Java al Date que entiende SQL
+
             comando.setDate(4, java.sql.Date.valueOf(nuevoSocio.fechaVencimiento));
 
             comando.executeUpdate();
-            System.out.println("-> ¡Socio guardado con vencimiento: " + nuevoSocio.fechaVencimiento + "!");
+            System.out.println("¡Socio guardado con vencimiento: " + nuevoSocio.fechaVencimiento + "!");
 
         } catch (SQLException e) {
-            System.out.println("❌ Error: Es probable que el DNI ya exista en el sistema.");
+            System.out.println("Error: Es probable que el DNI ya exista en el sistema.");
         }
     }
 
@@ -48,13 +48,13 @@ public class Gimnasio {
                 String nombre = tablaResultados.getString("Nombre");
                 String apellido = tablaResultados.getString("Apellido");
 
-                // ¡NUEVO! Leemos el Date de SQL y lo pasamos al LocalDate de Java
+
                 java.sql.Date fechaSql = tablaResultados.getDate("FechaVencimiento");
                 LocalDate vencimiento = fechaSql.toLocalDate();
 
                 texto.append("DNI: ").append(dni)
                         .append(" | Apellido: ").append(apellido).append(", ").append(nombre)
-                        .append(" | Vence el: ").append(vencimiento).append("\n"); // Ahora mostramos la fecha real
+                        .append(" | Vence el: ").append(vencimiento).append("\n");
             }
 
             if (!hayDatos) {
@@ -62,7 +62,7 @@ public class Gimnasio {
             }
 
         } catch (SQLException e) {
-            return "❌ Error al intentar leer la base de datos.";
+            return "Error al intentar leer la base de datos.";
         }
         return texto.toString();
     }
@@ -76,7 +76,7 @@ public class Gimnasio {
             comando.setString(1, nuevoNombre);
             comando.setString(2, nuevoApellido);
 
-            // ¡NUEVO! Calculamos la nueva fecha de vencimiento a partir de hoy
+
             LocalDate nuevaFecha = LocalDate.now().plusMonths(nuevosMeses);
             comando.setDate(3, java.sql.Date.valueOf(nuevaFecha));
 
@@ -85,13 +85,13 @@ public class Gimnasio {
             int filasAfectadas = comando.executeUpdate();
 
             if (filasAfectadas > 0) {
-                System.out.println("-> ¡Socio actualizado! Nuevo vencimiento: " + nuevaFecha);
+                System.out.println("Socio actualizado, Nuevo vencimiento: " + nuevaFecha);
             } else {
-                System.out.println("-> No se encontró ningún socio con ese DNI.");
+                System.out.println("No se encontró ningún socio con ese DNI.");
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al intentar modificar el socio.");
+            System.out.println("Error al intentar modificar el socio.");
         }
     }
 
@@ -105,13 +105,13 @@ public class Gimnasio {
             int filasAfectadas = comando.executeUpdate();
 
             if (filasAfectadas > 0) {
-                System.out.println("-> ¡Socio eliminado de la Base de Datos!");
+                System.out.println("Socio eliminado de la Base de Datos");
             } else {
-                System.out.println("-> No se encontró ningún socio con ese DNI.");
+                System.out.println("No se encontró ningún socio con ese DNI.");
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al intentar eliminar el socio.");
+            System.out.println("Error al intentar eliminar el socio.");
         }
     }
 }

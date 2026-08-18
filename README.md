@@ -8,7 +8,7 @@ El objetivo principal de este proyecto fue construir una aplicación de escritor
 - Gestión de Socios: Permite registrar nuevos clientes, modificar sus datos, visualizar la lista completa y eliminarlos.
 - Cálculo automático de vencimientos: Utiliza la API LocalDate de Java para calcular exactamente qué día vence la membresía del socio en base a los meses abonados.
 - Interfaz Visual: La interacción del usuario se realiza a través de una interfaz gráfica desarrollada íntegramente con Java Swing.
--  Base de Datos: La información se almacena en SQL Server mediante consultas preparadas (PreparedStatement) a través de JDBC, lo que previene ataques de inyección SQL. 
+- Base de Datos: La información se almacena en SQL Server mediante consultas preparadas (PreparedStatement) a través de JDBC, lo que previene ataques de inyección SQL. 
 - Validaciones: El sistema implementa manejo de excepciones (try-catch) para evitar cierres inesperados por errores de tipeo y valida a nivel de base de datos que no se puedan ingresar DNI duplicados.
 
 -- Tecnologías utilizadas
